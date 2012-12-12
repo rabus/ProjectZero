@@ -1,0 +1,47 @@
+
+textures.png
+format: RGBA4444
+filter: Nearest,Nearest
+repeat: none
+tiles
+  rotate: false
+  xy: 1, 1
+  size: 160, 120
+  orig: 160, 120
+  offset: 0, 0
+  index: -1
+objects20x20
+  rotate: false
+  xy: 163, 1
+  size: 120, 120
+  orig: 120, 120
+  offset: 0, 0
+  index: -1
+player
+  rotate: false
+  xy: 285, 41
+  size: 120, 80
+  orig: 120, 80
+  offset: 0, 0
+  index: -1
+fluids
+  rotate: false
+  xy: 285, 19
+  size: 160, 20
+  orig: 160, 20
+  offset: 0, 0
+  index: -1
+spikeshv3
+  rotate: false
+  xy: 407, 91
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+objects12x12
+  rotate: false
+  xy: 285, 5
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1

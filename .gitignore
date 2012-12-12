@@ -1,0 +1,18 @@
+*.class
+bin/
+development/
+.idea/
+out/
+proguard_logs/
+gen/
+bin/
+docs/
+
+# Project Files #
+*.eml
+*.iml
+
+# Package Files #
+#*.jar
+*.war
+*.ear
