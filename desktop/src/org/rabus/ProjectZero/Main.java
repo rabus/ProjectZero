@@ -1,9 +1,9 @@
 package org.rabus.ProjectZero;
 
-import java.io.IOException;
-
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+
+import java.io.IOException;
 
 public class Main
 {
