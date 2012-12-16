@@ -15,6 +15,9 @@ public class Main
         cfg.vSyncEnabled = true;
         cfg.width = 800;
         cfg.height = 480;
+//        cfg.fullscreen = true;
+//        cfg.width = 1920;
+//        cfg.height = 1080;
 
         new LwjglApplication(new ProjectZeroGame(), cfg);
     }

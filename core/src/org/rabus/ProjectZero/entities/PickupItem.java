@@ -8,11 +8,11 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 
-public class Crystal extends Entity
+public class PickupItem extends Entity
 {
-    public static final int BLUE = 1;
-    public static final int GREEN = 5;
-    public static final int RED = 20;
+    public static final int ARMOR_PEASANT = 0;
+    public static final int ARMOR_WARRIOR = 1;
+    public static final int ARMOR_MAGE = 2;
 
     AssetManager assets;
     Map map;
@@ -21,11 +21,12 @@ public class Crystal extends Entity
     public boolean collected = false;
     public int type;
     Animation animation;
+    TextureRegion texture;
     TextureRegion[] region;
 
     Sound pickUp;
 
-    public Crystal(AssetManager assets, Map map, float x, float y, int type)
+    public PickupItem(AssetManager assets, Map map, float x, float y, int type)
     {
         this.assets = assets;
         this.map = map;
@@ -34,13 +35,15 @@ public class Crystal extends Entity
         this.bounds.y = y;
         this.bounds.width = this.bounds.height = 0.8f;
         this.type = type;
-        this.region = assets.get("gfx/textures.atlas", TextureAtlas.class).findRegion("objects20x20").split(20, 20)[5];
-        if (this.type == Crystal.BLUE)
-            this.animation = new Animation(0.9f, region[0], region[1]);
-        else if (this.type == Crystal.GREEN)
-            this.animation = new Animation(0.9f, region[2], region[3]);
-        else if (this.type == Crystal.RED)
-            this.animation = new Animation(0.9f, region[4], region[5]);
+        this.region = assets.get("gfx/textures.atlas", TextureAtlas.class).findRegion("objects20x20").split(20, 20)[4];
+        this.texture = region[5];
+        //this.animation = new Animation(0.9f, region[4], region[5]);
+//        if (this.type == PickupItem.PEASANT)
+//            this.animation = new Animation(0.9f, region[0], region[1]);
+//        else if (this.type == PickupItem.WARRIOR)
+//            this.animation = new Animation(0.9f, region[2], region[3]);
+//        else if (this.type == PickupItem.MAGE)
+//            this.animation = new Animation(0.9f, region[4], region[5]);
 
         pickUp = assets.get("sfx/pickup_crystal.wav", Sound.class);
     }
@@ -56,7 +59,8 @@ public class Crystal extends Entity
     public void render(SpriteBatch batch)
     {
         if (this.pos.dst2(map.player.pos) < 140f)
-            batch.draw(this.animation.getKeyFrame(this.stateTime, true), pos.x + 0.2f, pos.y, 0.8f, 0.8f); // Changed size to 80%, so move 20% right
+            //batch.draw(this.animation.getKeyFrame(this.stateTime, true), pos.x, pos.y, 1, 1);
+            batch.draw(texture, pos.x, pos.y, 1, 1);
     }
 
     Rectangle[] r = {new Rectangle(), new Rectangle(), new Rectangle(), new Rectangle()};
@@ -76,10 +80,9 @@ public class Crystal extends Entity
         {
             if (!collected)
             {
-                pickUp.play(map.volume - 0.2f);
+                pickUp.play(map.volume);
+                map.player.changeArmor(this.type);
                 collected = true;
-                map.player.crystals += this.type;
-                map.player.score += this.type;
             }
             return true;
         }

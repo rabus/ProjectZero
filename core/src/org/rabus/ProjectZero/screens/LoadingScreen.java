@@ -1,11 +1,9 @@
 package org.rabus.ProjectZero.screens;
 
-import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
@@ -43,31 +41,12 @@ public class LoadingScreen extends BasicScreen
         assets.load("sfx/pickup_crystal.wav", Sound.class);
         assets.load("sfx/explode.wav", Sound.class);
 
-        // Levels
+        // Levels - maximum size: 128x128
+        assets.load("levels/level0.png", Pixmap.class);
+        assets.load("levels/level1.png", Pixmap.class);
+        //assets.load("levels/level2.png", Pixmap.class);
 
-        // Broken for runnable jar (should use resourse handle for that)
-        FileHandle dirHandle;
-        if (Gdx.app.getType() == Application.ApplicationType.Desktop)
-        {
-            //dirHandle = Gdx.files.internal("./bin/levels/");
-            assets.load("levels/level0.png", Pixmap.class);
-            assets.load("levels/level1.png", Pixmap.class);
-            assets.load("levels/level2.png", Pixmap.class);
-        }
-        else
-        {
-            dirHandle = Gdx.files.internal("./levels/");
-            for (FileHandle level : dirHandle.list())
-            {
-                if (!level.isDirectory())
-                {
-                    assets.load("levels/" + level.name(), Pixmap.class);
-                    Gdx.app.log("ProjectZero", level.name() + " is loaded.");
-                }
-            }
-        }
-
-        // Textures
+        // Fonts
         assets.load("gfx/fonts/verdana16.fnt", BitmapFont.class);
         assets.load("gfx/fonts/verdana24.fnt", BitmapFont.class);
         assets.load("gfx/fonts/verdana32.fnt", BitmapFont.class);
@@ -82,6 +61,8 @@ public class LoadingScreen extends BasicScreen
 
         // Textures
         assets.load("gfx/textures.atlas", TextureAtlas.class);
+        assets.load("gfx/sprites.atlas", TextureAtlas.class);
+        assets.load("gfx/backgrounds.atlas", TextureAtlas.class);
     }
 
     @Override

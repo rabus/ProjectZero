@@ -1,6 +1,8 @@
 TODO:
 
 ### IMPORTANT ###
+> Create loading screen with assets loading for every separate level (and unload previous)
+> Possibly check collisions, then move (use grounded property) -> Below
 > Modify collision system to check collisions withour moving (to stabilise rendered movement, no shaking)
 > Map generation, define standard map format and dimensions, proper tiles placement based on bordering tiles
 > Create proper render method to BLOCKS and make it more flexible (to render only if player close by)
@@ -10,8 +12,11 @@ TODO:
 > Optimize disposing for every object and entity, clean up memory (!!!)
 > Optimize larger object count (object updates heavily lowers fps) -> Maybe check collisions on player only and remove updates on non-critical static objects, like fluids and spikes (???)
 
+### IDEAS ###
+> Destructible blocks (maybe special block for that)
+
 ### PENDING ###
-> Change score to crystals (also calculate total score besides crystals)
+> Change score to crystals (also calculate total score besides crystals) -> EDIT: to diamonds
 > Create proper screen graphics (Loading, Intro, Menu, GameOver, GameWon)
 > Add Game Complete screen when all levels finished :)
 > Move animations to adequate objects.
